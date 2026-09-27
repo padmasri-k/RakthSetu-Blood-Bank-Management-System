@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, jsonify
+from flask_cors import CORS
 import os, csv
 from collections import Counter
 
 app = Flask(__name__)
+CORS(app)
 CSV_PATH = os.path.join(os.path.dirname(__file__), 'blood-banks.csv')
 
 
@@ -58,7 +60,14 @@ def index():
     states = sorted({val(r, 'State') for r in DATA if val(r, 'State')})
     categories = sorted({val(r, 'Category') for r in DATA if val(r, 'Category')})
     return render_template('index.html', total=len(DATA), states=states, categories=categories)
-
+@app.route('/api/filters')
+def filters():
+    states = sorted({val(r, 'State') for r in DATA if val(r, 'State')})
+    categories = sorted({val(r, 'Category') for r in DATA if val(r, 'Category')})
+    return jsonify({
+        'states': states,
+        'categories': categories
+    })
 
 @app.route('/api/stats')
 def stats():

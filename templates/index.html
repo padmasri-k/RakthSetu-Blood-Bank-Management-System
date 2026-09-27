@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="RakthSetu Blood Bank Management System">
   <title>RakthSetu | Blood Bank Management System</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="stylesheet" href="static/style.css">
 </head>
 <body>
 <header class="topbar">
@@ -44,9 +44,9 @@
   </div>
   <div class="filters">
     <label class="searchbox"><span>⌕</span><input id="q" autocomplete="off" placeholder="Search name, city, district, contact…"></label>
-    <select id="state" aria-label="Filter by state"><option value="">All states</option>{% for s in states %}<option value="{{s}}">{{s}}</option>{% endfor %}</select>
+   <select id="state" aria-label="Filter by state"><option value="">All states</option></select>
     <select id="city" aria-label="Filter by city"><option value="">All cities</option></select>
-    <select id="category" aria-label="Filter by category"><option value="">All categories</option>{% for c in categories %}<option value="{{c}}">{{c}}</option>{% endfor %}</select>
+    <select id="category" aria-label="Filter by category"><option value="">All categories</option></select>
     <button class="primary small" id="searchBtn">Search</button>
     <button class="clear-btn" id="clearBtn">Clear</button>
   </div>
@@ -72,6 +72,6 @@
   <div class="modal-card"><button class="close" id="closeModal" aria-label="Close">×</button><div id="modalBody"></div></div>
 </div>
 <footer>RakthSetu • Blood Bank Management System • DBMS Project</footer>
-<script src="{{ url_for('static', filename='app.js') }}"></script>
+<script src="static/app.js"></script>
 </body>
 </html>

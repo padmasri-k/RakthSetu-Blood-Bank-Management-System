@@ -2,7 +2,7 @@ const $ = (id) => document.getElementById(id);
 let timer;
 
 async function loadStats() {
-  const r = await fetch('/api/stats');
+  const r = await fetch('https://rakthsetu-blood-bank-management-system.onrender.com/api/stats');
   const s = await r.json();
   $('total').textContent = s.total.toLocaleString();
   $('states').textContent = s.states;
@@ -12,7 +12,7 @@ async function loadStats() {
 
 async function loadCities() {
   const state = $('state').value;
-  const r = await fetch('/api/cities?state=' + encodeURIComponent(state));
+  const r = await fetch('https://rakthsetu-blood-bank-management-system.onrender.com/api/cities?state=' + encodeURIComponent(state));
   const cities = await r.json();
   $('city').innerHTML = '<option value="">All cities</option>' + cities.map(c => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
 }
@@ -45,14 +45,14 @@ async function searchBanks() {
     category: $('category').value, limit: 120
   });
   $('results').innerHTML = '<div class="empty">Searching the dataset…</div>';
-  const r = await fetch('/api/search?' + params.toString());
+  const r = await fetch('https://rakthsetu-blood-bank-management-system.onrender.com/api/search?' + params.toString());
   const data = await r.json();
   $('resultCount').textContent = `${data.count.toLocaleString()} matching records`;
   $('results').innerHTML = data.results.length ? data.results.map(cardHtml).join('') : '<div class="empty"><strong>No blood banks found.</strong><br>Try a different search or clear the filters.</div>';
 }
 
 async function openDetails(id) {
-  const r = await fetch('/api/blood-banks/' + id);
+  const r = await fetch('https://rakthsetu-blood-bank-management-system.onrender.com/api/blood-banks/' + id);
   const b = await r.json();
   if (!r.ok) return;
   const map = b.latitude && b.longitude ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(b.latitude + ',' + b.longitude)}` : '';
