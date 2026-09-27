@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="RakthSetu Blood Bank Management System">
+  <title>RakthSetu | Blood Bank Management System</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#home" aria-label="RakthSetu home">
+    <div class="logo">✚</div>
+    <div><b>RakthSetu</b><span>Blood Bank Management System</span></div>
+  </a>
+  <nav><a href="#home">Home</a><a href="#search">Find a Bank</a><a href="#about">About</a></nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-copy">
+    <span class="eyebrow">🩸 BLOOD BANK DIRECTORY</span>
+    <h1>Find a blood bank <em>when it matters.</em></h1>
+    <p>Explore the blood-bank records from your project dataset. Search by name, location or category and view contact, services, licensing and officer details.</p>
+    <a class="primary" href="#search">Find Blood Banks <span>→</span></a>
+  </div>
+  <div class="hero-panel">
+    <div class="pulse">🩸</div>
+    <div><strong>Quick search</strong><p>Type a bank name, city, district, state or contact number to find matching records.</p></div>
+  </div>
+</section>
+
+<section class="stats" id="stats">
+  <div><strong id="total">—</strong><span>Blood Banks</span></div>
+  <div><strong id="states">—</strong><span>States / UTs</span></div>
+  <div><strong id="cities">—</strong><span>Cities</span></div>
+  <div><strong id="gov">—</strong><span>Government Banks</span></div>
+</section>
+
+<section id="search" class="search-section">
+  <div class="section-head">
+    <div><span class="eyebrow">DIRECTORY</span><h2>Find a Blood Bank</h2></div>
+    <span class="count" id="resultCount">Loading records…</span>
+  </div>
+  <div class="filters">
+    <label class="searchbox"><span>⌕</span><input id="q" autocomplete="off" placeholder="Search name, city, district, contact…"></label>
+    <select id="state" aria-label="Filter by state"><option value="">All states</option>{% for s in states %}<option value="{{s}}">{{s}}</option>{% endfor %}</select>
+    <select id="city" aria-label="Filter by city"><option value="">All cities</option></select>
+    <select id="category" aria-label="Filter by category"><option value="">All categories</option>{% for c in categories %}<option value="{{c}}">{{c}}</option>{% endfor %}</select>
+    <button class="primary small" id="searchBtn">Search</button>
+    <button class="clear-btn" id="clearBtn">Clear</button>
+  </div>
+  <div class="quick-tags">
+    <button data-query="government">Government</button>
+    <button data-query="24x7">24X7 Service</button>
+    <button data-query="blood component">Blood Components</button>
+  </div>
+  <div id="results" class="grid"></div>
+</section>
+
+<section id="about" class="about">
+  <div><span class="eyebrow">PROJECT</span><h2>Your dataset, turned into a website.</h2><p>RakthSetu is the application layer for your DBMS project. The current version uses the supplied CSV through a Flask backend, keeping the application faithful to the original dataset. The SQL schema and ER-diagram phase can be added after the website is finalized.</p></div>
+  <div class="about-list">
+    <div><span>01</span><b>Search</b><em>Find banks by name, place, state or category.</em></div>
+    <div><span>02</span><b>Explore</b><em>Open a complete record with contact and service details.</em></div>
+    <div><span>03</span><b>Locate</b><em>Use the recorded coordinates to open the location on a map.</em></div>
+  </div>
+</section>
+</main>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card"><button class="close" id="closeModal" aria-label="Close">×</button><div id="modalBody"></div></div>
+</div>
+<footer>RakthSetu • Blood Bank Management System • DBMS Project</footer>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
