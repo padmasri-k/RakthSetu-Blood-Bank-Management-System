@@ -1,0 +1,13 @@
+donor_id,donor_name,age,gender,blood_group,phone,city
+1,Rahul Kumar,24,Male,O+,9876500001,Port Blair
+2,Sneha Reddy,22,Female,A+,9876500002,Port Blair
+3,Arjun Das,29,Male,B+,9876500003,Port Blair
+4,Priya Sharma,26,Female,O-,9876500004,Anantapur
+5,Kiran Rao,31,Male,AB+,9876500005,Anantapur
+6,Anjali Devi,25,Female,B-,9876500006,Anantapur
+7,Vikram Singh,28,Male,A-,9876500007,Anantapur
+8,Meena Patel,23,Female,O+,9876500008,Anantapur
+9,Rohit Verma,30,Male,AB-,9876500009,Anantapur
+10,Divya Nair,27,Female,A+,9876500010,Anantapur
+11,Suresh Kumar,33,Male,B+,9876500011,Anantapur
+12,Lakshmi Devi,29,Female,O+,9876500012,Anantapur
